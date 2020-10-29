@@ -118,7 +118,7 @@ create_table_stmt:
 column_def: column_name type_name? column_constraint*;
 
 type_name:
-	name+ (
+	name(
 		'(' signed_number ')'
 		| '(' signed_number ',' signed_number ')'
 	)?;
@@ -247,7 +247,7 @@ expr:
 	) expr
 	| expr AND expr
 	| expr OR expr
-	| function_name '(' ((DISTINCT? expr ( ',' expr)*) | '*')? ')' filter_clause? over_clause?
+	| (function_name | keyword) '(' ((DISTINCT? expr ( ',' expr)*) | '*')? ')' filter_clause? over_clause?
 	| '(' expr (',' expr)* ')'
 	| CAST '(' expr AS type_name ')'
 	| expr COLLATE collation_name
@@ -758,6 +758,5 @@ table_function_name: any_name;
 
 any_name:
 	IDENTIFIER
-	| keyword
 	| STRING_LITERAL
 	| '(' any_name ')';
