@@ -218,6 +218,9 @@ drop_stmt:
 		schema_name '.'
 	)? any_name;
 
+
+expr_list: '(' expr (',' expr)* ')';
+
 /*
  SQLite understands the following binary operators, in order from highest to lowest precedence: || /
  % + - << >> & | < <= > >= = == != <> IS IS NOT IN LIKE GLOB MATCH REGEXP AND OR
@@ -303,9 +306,7 @@ insert_stmt:
 	)? (
 		(
 			(
-				VALUES '(' expr (',' expr)* ')' (
-					',' '(' expr ( ',' expr)* ')'
-				)*
+				VALUES expr_list (',' expr_list)*
 			)
 			| select_stmt
 		) upsert_clause?
