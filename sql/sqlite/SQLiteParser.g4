@@ -182,7 +182,7 @@ create_trigger_stmt:
 create_view_stmt:
 	CREATE (TEMP | TEMPORARY)? VIEW (IF NOT EXISTS)? (
 		schema_name '.'
-	)? view_name ('(' column_name (',' column_name)* ')')? AS select_stmt;
+	)? view_name ('(' column_name (',' column_name)* ')')? AS QUERY_LITERAL;
 
 create_virtual_table_stmt:
 	CREATE VIRTUAL TABLE (IF NOT EXISTS)? (schema_name '.')? table_name USING module_name (

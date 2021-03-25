@@ -209,6 +209,8 @@ OTHERS: O T H E R S;
 DO: D O;
 NOTHING: N O T H I N G;
 
+QUERY_LITERAL: '\'"' (~ '"' | ('"' ~'\''))* '"\'';
+
 IDENTIFIER:
 	'"' (~'"' | '""')* '"'
 	| '`' (~'`' | '``')* '`'
