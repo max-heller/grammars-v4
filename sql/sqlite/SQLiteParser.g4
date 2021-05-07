@@ -417,8 +417,8 @@ compound_operator: (UNION ALL?) | INTERSECT | EXCEPT;
 update_stmt:
 	with_clause? UPDATE (
 		OR (ROLLBACK | ABORT | REPLACE | FAIL | IGNORE)
-	)? qualified_table_name SET (column_name | column_name_list) '=' expr (
-		',' (column_name | column_name_list) '=' expr
+	)? qualified_table_name SET (schema_name '.')? (column_name | column_name_list) '=' expr (
+		',' (schema_name '.')? (column_name | column_name_list) '=' expr
 	)* (WHERE expr)?;
 
 column_name_list: '(' column_name (',' column_name)* ')';
