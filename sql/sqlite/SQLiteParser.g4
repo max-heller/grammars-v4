@@ -733,7 +733,7 @@ trigger_name: any_name;
 
 view_name: any_name;
 
-purpose_name: any_name;
+purpose_name: STRING_LITERAL;
 
 module_name: any_name;
 
